@@ -1,6 +1,8 @@
 # Starwars Catalog
 
 ## Instruktioner
+Använd [https://swapi.dev](https://swapi.dev) som API för att hämta all data.
+
 1. En av gruppmedlemmarna forkar det här repot och lägger sedan till den andra som collaborator
 2. Arbeta mot erat forkade repo
 
