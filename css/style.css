@@ -56,7 +56,7 @@ header h1 {
 	position: relative;
 	margin-left: 50px;
 	width: 484px;
-	height: 624px;
+	height: 680px;
 	background-color: var(--lightgrey);
 	border-radius: 10px 10px 0px 0px;
 }
@@ -89,13 +89,14 @@ header h1 {
 	color: var(--listheader-grey);
 }
 
-.card__ul a {
-	text-decoration: none;
-	color: var(--black);
+
+.card__ul li {
+	cursor: pointer;
 }
 
 .card__ul li:hover {
 	background-color: var(--li-active);
+	color: var(--white);
 }
 
 .card__li--active {
@@ -174,7 +175,7 @@ header h1 {
 
 .character__stats {
 	width: 484px;
-	height: 263px;
+	height: 303px;
 	background-color: var(--details-characters);
 	color: var(--black);
 }
@@ -202,7 +203,7 @@ header h1 {
 
 .planet__stats {
 	width: 484px;
-	height: 287px;
+	height: 303px;
 	background-color: var(--details-planet);
 	color: var(--white);
 }
