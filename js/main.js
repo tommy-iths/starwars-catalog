@@ -44,11 +44,13 @@ function clicked(e) {
   let buttonClicked = e.target.className;
 
   if (buttonClicked === "next" && currentPage < maximumPages) {
+    document.querySelector(".card__content__loader").style.display = "block";
     document.querySelector(".card__ul--characters").innerHTML = "";
     currentPage = currentPage + 1
     charactrerList()
   } else if (buttonClicked === "prev" && currentPage > 1) {
     if (currentPage > 1) {
+      document.querySelector(".card__content__loader").style.display = "block";
       document.querySelector(".card__ul--characters").innerHTML = "";
       currentPage = currentPage - 1
       charactrerList()
