@@ -63,9 +63,27 @@ function displayCharDetails(character) {
   `
 }
 
-/******************************************* */
 
+// Listen for what character was clicked.
+document.querySelector(".card__ul--characters").addEventListener("click", character)
 
+// Function for finding the index of character, removing and/or setting the class "active".
+async function character(e) {
+  const data = await charactersData(currentPage)
+
+  let nodes = document.querySelectorAll('li');
+  let characterClicked = [].indexOf.call(nodes, e.target)
+  console.log(characterClicked);
+
+  displayCharDetails(data.results[characterClicked])
+
+  nodes.forEach(element => {
+    element.classList.remove("card__li--active")
+  })
+
+  let setActive = document.querySelectorAll('li')[characterClicked]
+  setActive.classList.add("card__li--active");
+}
 
 
 async function charactrerList() {
@@ -82,31 +100,9 @@ async function charactrerList() {
     createListElements(character.name)
   }
 
+
   // Listen for menu click to update characters-list.
   document.querySelector(".card__navbar").addEventListener("click", clicked)
-
-
-  // Listen for what character was clicked.
-  document.querySelector(".card__ul--characters").addEventListener("click", displayDetails, {
-    once: true, passive: true,
-    capture: true
-  })
-
-  // Function for finding the index of character, removing and/or setting the class "active".
-  function displayDetails(e) {
-    let nodes = document.querySelectorAll('li');
-    let characterClicked = [].indexOf.call(nodes, e.target)
-    console.log(characterClicked);
-
-    displayCharDetails(data.results[characterClicked])
-
-    nodes.forEach(element => {
-      element.classList.remove("card__li--active")
-    })
-
-    let setActive = document.querySelectorAll('li')[characterClicked]
-    setActive.classList.add("card__li--active");
-  }
 
 
 }
