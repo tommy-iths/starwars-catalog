@@ -237,16 +237,11 @@ header h1 {
 }
 
 .planet__stats {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 484px;
 	height: 303px;
 	background-color: var(--details-planet);
 	color: var(--white);
 }
-
-
 
 .planet__stats h1 {
 	font-family: Roboto;

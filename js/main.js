@@ -15,6 +15,29 @@ async function charactersData(page) {
   return data
 }
 
+// Function to fetch data from API
+async function planet(homeworld) {
+
+  const response = await fetch(homeworld)
+
+  // destructuring, outputing Json-data.
+  const data = await response.json()
+
+  const planetDetails = document.querySelector(".planet__stats__content")
+
+  planetDetails.innerHTML = `
+  <h1>${data.name}</h1></br>
+  Rotation period: ${data.rotation_period}</br> 
+  Orbital period: ${data.orbital_period}</br> 
+  Diameter: ${data.diameter}</br> 
+  Climate: ${data.climater}</br>
+  gravity: ${data.gravity}</br>
+  Terrain: ${data.terrain}</br>
+  </p>
+  `
+
+}
+
 // Function för creating and rendering list items to the DOM
 function createListElements(character) {
   const createLi = document.createElement("li");
@@ -71,9 +94,13 @@ document.querySelector(".card__ul--characters").addEventListener("click", charac
 async function character(e) {
   const data = await charactersData(currentPage)
 
-  let nodes = document.querySelectorAll('li');
-  let characterClicked = [].indexOf.call(nodes, e.target)
-  console.log(characterClicked);
+  const nodes = document.querySelectorAll('li');
+  const characterClicked = [].indexOf.call(nodes, e.target)
+
+  const homeworld = data.results[characterClicked].homeworld
+
+  // Call function that displays characters homeworld.
+  planet(homeworld)
 
   displayCharDetails(data.results[characterClicked])
 
@@ -100,10 +127,8 @@ async function charactrerList() {
     createListElements(character.name)
   }
 
-
   // Listen for menu click to update characters-list.
   document.querySelector(".card__navbar").addEventListener("click", clicked)
-
 
 }
 charactrerList()
