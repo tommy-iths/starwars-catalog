@@ -3,32 +3,17 @@
 let currentPage = 1
 let maximumPages = 0
 
-
 // Function to fetch data from API
 async function charactersData(page) {
 
   const response = await fetch("https://swapi.dev/api/people/?page=" + page)
 
-  // Dot notation destructuring, outputing Json-data.
+  // destructuring, outputing Json-data.
   const data = await response.json()
 
   // Returning the API-resulats to charactrerList-function
   return data
 }
-
-
-async function planetData(planet) {
-
-  const response = await fetch(planet)
-  const data = await response.json()
-
-
-  const details = document.querySelector(".planet__stats__content")
-  details.innerHTML = `
-  <h1>${data.name}</h1></br>
-  `
-}
-
 
 // Function för creating and rendering list items to the DOM
 function createListElements(character) {
@@ -44,14 +29,14 @@ function clicked(e) {
   let buttonClicked = e.target.className;
 
   if (buttonClicked === "next" && currentPage < maximumPages) {
-    document.querySelector(".card__content__loader").style.display = "block";
     document.querySelector(".card__ul--characters").innerHTML = "";
+    document.querySelector(".card__content__loader").style.display = "block";
     currentPage = currentPage + 1
     charactrerList()
   } else if (buttonClicked === "prev" && currentPage > 1) {
     if (currentPage > 1) {
-      document.querySelector(".card__content__loader").style.display = "block";
       document.querySelector(".card__ul--characters").innerHTML = "";
+      document.querySelector(".card__content__loader").style.display = "block";
       currentPage = currentPage - 1
       charactrerList()
     }
@@ -62,10 +47,7 @@ function clicked(e) {
 // Function for rendering character details
 
 function displayCharDetails(character) {
-
   const details = document.querySelector(".details")
-  const homeworld = character.homeworld
-
 
   details.innerHTML = `
   <h1>${character.name}</h1></br>
@@ -79,12 +61,9 @@ function displayCharDetails(character) {
   Gender: ${character.gender}</br>
   </p>
   `
-
-  planetData(homeworld)
-
-
-
 }
+
+/******************************************* */
 
 
 
@@ -108,21 +87,27 @@ async function charactrerList() {
 
 
   // Listen for what character was clicked.
-  document.querySelector(".card__ul--characters").addEventListener("click", displayDetails)
+  document.querySelector(".card__ul--characters").addEventListener("click", displayDetails, {
+    once: true, passive: true,
+    capture: true
+  })
 
-  // Function for finding the index of character, removing and setting the class "active".
+  // Function for finding the index of character, removing and/or setting the class "active".
   function displayDetails(e) {
     let nodes = document.querySelectorAll('li');
     let characterClicked = [].indexOf.call(nodes, e.target)
+    console.log(characterClicked);
+
     displayCharDetails(data.results[characterClicked])
 
     nodes.forEach(element => {
-      element.classList.remove("card__li--active");
-    });
+      element.classList.remove("card__li--active")
+    })
 
     let setActive = document.querySelectorAll('li')[characterClicked]
     setActive.classList.add("card__li--active");
-  };
+  }
+
 
 }
 charactrerList()

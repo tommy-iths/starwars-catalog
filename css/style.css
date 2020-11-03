@@ -27,10 +27,11 @@ body {
 	--details-planet: #8e8e8e;
 }
 
-.card__content__loader {
-  border: 16px solid #f3f3f3;
+
+.loader {
+  border: 16px solid var(--white);
   border-radius: 50%;
-  border-top: 16px solid #3498db;
+  border-top: 16px solid var(--bluegrey);
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -86,6 +87,18 @@ header h1 {
 .card ul {
 	list-style: none;
 }
+
+.card__content--characters {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+	
+}
+
+.card__content__loader {
+	margin-top: 50%;
+}
+
 
 .card__ul--characters li {
 	display: flex;
@@ -224,11 +237,16 @@ header h1 {
 }
 
 .planet__stats {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 484px;
 	height: 303px;
 	background-color: var(--details-planet);
 	color: var(--white);
 }
+
+
 
 .planet__stats h1 {
 	font-family: Roboto;
