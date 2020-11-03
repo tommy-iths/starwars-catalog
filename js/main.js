@@ -89,7 +89,7 @@ function displayCharDetails(character) {
 
 async function charactrerList() {
   const data = await charactersData(currentPage)
-
+  document.querySelector(".card__content__loader").style.display = "none";
   // variable for setting the amount of pages needed. 10 is the maximum number of characters a "page" can display.
   maximumPages = maximumPages = Math.ceil(data.count / 10)
 
