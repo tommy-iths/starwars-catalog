@@ -15,7 +15,6 @@ let maximumPages = 0
 async function charactersData(page) {
   const response = await fetch("https://swapi.dev/api/people/?page=" + page)
   const data = await response.json()
-  console.log(data);
   return data
 }
 
@@ -82,8 +81,8 @@ function displayPlanetDetails(planet) {
   `
 }
 
-
 //        Functions for rendering and removing elements on page END
+
 
 
 // Function thats clears UL and updates variable currentPage count.
@@ -117,6 +116,11 @@ async function character(e) {
   const characterClicked = [].indexOf.call(nodes, e.target)
 
   const homeworld = data.results[characterClicked].homeworld
+  console.log(homeworld);
+
+  const homeworldHttps
+  console.log(homeworldHttps);
+
 
   // Call function that displays characters homeworld.
   planet(homeworld)
