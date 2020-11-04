@@ -82,6 +82,11 @@ p {
 	letter-spacing: 4px;
 }
 
+a {
+	text-decoration: none;
+	color: var(--black);
+}
+
 .container {
 	position: absolute;
 	display: flex;
