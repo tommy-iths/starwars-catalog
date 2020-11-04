@@ -66,22 +66,24 @@ function displayCharDetails(character) {
 
 // Function for rendering planet details
 
-function displayPlanetDetails(data) {
+function displayPlanetDetails(planet) {
   const planetDetails = document.querySelector(".planet__stats__content")
 
   planetDetails.innerHTML = `
-  <h1>${data.name}</h1>
+  <h1>${planet.name}</h1>
   <p>
-  Rotation period: ${data.rotation_period}h</br> 
-  Orbital period: ${data.orbital_period} days</br> 
-  Diameter: ${data.diameter}km</br> 
-  Climate: ${data.climater}</br>
-  gravity: ${data.gravity}</br>
-  Terrain: ${data.terrain}</br>
+  Rotation period: ${planet.rotation_period}h</br> 
+  Orbital period: ${planet.orbital_period} days</br> 
+  Diameter: ${planet.diameter}km</br> 
+  Climate: ${planet.climater}</br>
+  gravity: ${planet.gravity}</br>
+  Terrain: ${planet.terrain}</br>
   </p>
   `
-
 }
+
+
+//        Functions for rendering and removing elements on page END
 
 
 // Function thats clears UL and updates variable currentPage count.
