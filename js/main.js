@@ -15,27 +15,17 @@ let maximumPages = 0
 async function charactersData(page) {
   const response = await fetch("https://swapi.dev/api/people/?page=" + page)
   const data = await response.json()
+  console.log(data);
   return data
 }
 
 // Function to fetch data about planets
 async function planet(homeworld) {
-  console.log(homeworld);
   const response = await fetch(homeworld)
   const data = await response.json()
-  const planetDetails = document.querySelector(".planet__stats__content")
 
-  planetDetails.innerHTML = `
-  <h1>${data.name}</h1>
-  <p>
-  Rotation period: ${data.rotation_period}h</br> 
-  Orbital period: ${data.orbital_period} days</br> 
-  Diameter: ${data.diameter}km</br> 
-  Climate: ${data.climater}</br>
-  gravity: ${data.gravity}</br>
-  Terrain: ${data.terrain}</br>
-  </p>
-  `
+  // Calls rendering function for displaying the data
+  displayPlanetDetails(data)
 }
 
 /** api request end */
@@ -72,6 +62,25 @@ function displayCharDetails(character) {
   Gender: ${character.gender}</br>
   </p>
   `
+}
+
+// Function for rendering planet details
+
+function displayPlanetDetails(data) {
+  const planetDetails = document.querySelector(".planet__stats__content")
+
+  planetDetails.innerHTML = `
+  <h1>${data.name}</h1>
+  <p>
+  Rotation period: ${data.rotation_period}h</br> 
+  Orbital period: ${data.orbital_period} days</br> 
+  Diameter: ${data.diameter}km</br> 
+  Climate: ${data.climater}</br>
+  gravity: ${data.gravity}</br>
+  Terrain: ${data.terrain}</br>
+  </p>
+  `
+
 }
 
 
