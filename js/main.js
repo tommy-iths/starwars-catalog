@@ -1,49 +1,77 @@
 
 // Global variable for tracking the Currentpage-number
 let currentPage = 1
+
+// Global variable for tracking the number of pages for pagination.
 let maximumPages = 0
 
-// Function to fetch data from API
+/************************************************************ */
+//
+//        api request start
+//
+/************************************************************ */
+
+// Function to fetch character data
 async function charactersData(page) {
-
   const response = await fetch("https://swapi.dev/api/people/?page=" + page)
-
-  // destructuring, outputing Json-data.
   const data = await response.json()
-
-  // Returning the API-resulats to charactrerList-function
   return data
 }
 
-// Function to fetch data from API
+// Function to fetch data about planets
 async function planet(homeworld) {
-
+  console.log(homeworld);
   const response = await fetch(homeworld)
-
-  // destructuring, outputing Json-data.
   const data = await response.json()
-
   const planetDetails = document.querySelector(".planet__stats__content")
 
   planetDetails.innerHTML = `
-  <h1>${data.name}</h1></br>
-  Rotation period: ${data.rotation_period}</br> 
-  Orbital period: ${data.orbital_period}</br> 
-  Diameter: ${data.diameter}</br> 
+  <h1>${data.name}</h1>
+  <p>
+  Rotation period: ${data.rotation_period}h</br> 
+  Orbital period: ${data.orbital_period} days</br> 
+  Diameter: ${data.diameter}km</br> 
   Climate: ${data.climater}</br>
   gravity: ${data.gravity}</br>
   Terrain: ${data.terrain}</br>
   </p>
   `
-
 }
 
-// Function för creating and rendering list items to the DOM
+/** api request end */
+
+/*************************************************************** */
+//
+//        Functions for rendering and removing elements on page
+//
+/*************************************************************** */
+
+// Function for rendering characters name
 function createListElements(character) {
   const createLi = document.createElement("li");
   const nameOfCharacter = document.createTextNode(character);
   createLi.appendChild(nameOfCharacter);
   document.querySelector(".card__ul--characters").appendChild(createLi);
+}
+
+
+// Function for rendering character details
+
+function displayCharDetails(character) {
+  const details = document.querySelector(".character__stats__content")
+
+  details.innerHTML = `
+  <h1>${character.name}</h1>
+  <p> 
+  Height: ${character.height}</br> 
+  Mass: ${character.mass}</br> 
+  Hair color: ${character.hair_color}</br> 
+  Skin color: ${character.skin_color}</br>
+  Eye color: ${character.eye_color}</br>
+  Birth year: ${character.birth_year}</br>
+  Gender: ${character.gender}</br>
+  </p>
+  `
 }
 
 
@@ -64,26 +92,6 @@ function clicked(e) {
       charactrerList()
     }
   }
-}
-
-
-// Function for rendering character details
-
-function displayCharDetails(character) {
-  const details = document.querySelector(".details")
-
-  details.innerHTML = `
-  <h1>${character.name}</h1></br>
-  <p> 
-  Height: ${character.Height}</br> 
-  Mass: ${character.mass}</br> 
-  Hair color: ${character.hair_color}</br> 
-  Skin color: ${character.skin_color}</br>
-  Eye color: ${character.eye_color}</br>
-  Birth year: ${character.birth_year}</br>
-  Gender: ${character.gender}</br>
-  </p>
-  `
 }
 
 

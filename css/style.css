@@ -68,6 +68,16 @@ header h1 {
 	padding: 105px 67px;
 }
 
+p {
+	font-family: Roboto;
+	font-weight: 400;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 21px;
+	letter-spacing: 4px;
+}
+
 .container {
 	position: absolute;
 	display: flex;
@@ -211,6 +221,7 @@ header h1 {
 .character__stats {
 	width: 484px;
 	height: 303px;
+	padding: 2px 21px;
 	background-color: var(--details-characters);
 	color: var(--black);
 }
@@ -239,6 +250,7 @@ header h1 {
 .planet__stats {
 	width: 484px;
 	height: 303px;
+	padding: 2px 21px;
 	background-color: var(--details-planet);
 	color: var(--white);
 }
