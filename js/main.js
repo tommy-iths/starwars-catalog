@@ -83,8 +83,6 @@ function displayPlanetDetails(planet) {
 
 //        Functions for rendering and removing elements on page END
 
-
-
 // Function thats clears UL and updates variable currentPage count.
 function clicked(e) {
   let buttonClicked = e.target.className;
@@ -116,9 +114,10 @@ async function character(e) {
   const characterClicked = [].indexOf.call(nodes, e.target)
 
   const homeworld = data.results[characterClicked].homeworld
+  const httpsUrl = homeworld.replace("http", "https")
 
   // Call function that displays characters homeworld.
-  planet(homeworld)
+  planet(httpsUrl)
 
   displayCharDetails(data.results[characterClicked])
 
