@@ -116,11 +116,6 @@ async function character(e) {
   const characterClicked = [].indexOf.call(nodes, e.target)
 
   const homeworld = data.results[characterClicked].homeworld
-  console.log(homeworld);
-
-  const homeworldHttps
-  console.log(homeworldHttps);
-
 
   // Call function that displays characters homeworld.
   planet(homeworld)
