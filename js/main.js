@@ -66,6 +66,8 @@ function displayCharDetails(character) {
 // Function for rendering planet details
 
 function displayPlanetDetails(planet) {
+
+
   const planetDetails = document.querySelector(".planet__stats__content")
 
   planetDetails.innerHTML = `

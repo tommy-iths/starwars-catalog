@@ -38,8 +38,8 @@ body {
   animation: spin 2s linear infinite;
 }
 
-.planet__stats__loader {
-	display: none;
+.card__content__loader {
+	margin-top: 50%;
 }
 
 /* Safari */
@@ -113,11 +113,6 @@ a {
   justify-content: center;
 	
 }
-
-.card__content__loader {
-	margin-top: 50%;
-}
-
 
 .card__ul--characters li {
 	display: flex;
